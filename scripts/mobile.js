@@ -1,33 +1,6 @@
-var cityInput = document.getElementById("searchCity");
+var cityInputMobile = document.getElementById("mobileSearchCity");
 
-var backgroundsList = [
-  "day1.jpg",
-  "day2.jpg",
-  "day3.jpg",
-  "day4.jpg",
-  "day5.jpg",
-  // "night1.jpg",
-  // "night2.jpg",
-  // "night3.jpg",
-  // "night4.jpg",
-  // "night5.jpg",
-  "cloudy1.jpg",
-  "cloudy2.jpg",
-  "cloudy3.jpg",
-  "cloudy4.jpg",
-  "cloudy5.jpg",
-  // "rainy1.jpg",
-  // "rainy2.jpg",
-  // "rainy3.jpg",
-  // "rainy4.jpg",
-  // "rainy5.jpg",
-];
-
-var randomBackground = backgroundsList[Math.floor(Math.random() * backgroundsList.length)];
-
-document.body.style.background = "linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)) , url('media/" + randomBackground + "')";
-
-cityInput.addEventListener("keyup", function (event) {
+cityInputMobile.addEventListener("keyup", function (event) {
   if (event.key === "Enter") {
     loader();
     function loader() {
@@ -61,7 +34,7 @@ cityInput.addEventListener("keyup", function (event) {
       // document.getElementById("loader3").src = "icons/loader.gif";
     }
 
-    var cityInputValue = cityInput.value;
+    var cityInputValue = cityInputMobile.value;
 
     var apiKey = "7d3582ada4896dccd3e42654d40246c4"; // Default
     var unit = "metric";
@@ -136,8 +109,6 @@ cityInput.addEventListener("keyup", function (event) {
             .catch(error => {
               console.error('Error fetching data:', error);
             });
-
-
 
           document.getElementById("locationName").innerHTML = location;
           document.getElementById("temperatureValue").innerHTML = temperature + "<sup>o</sup>C";
