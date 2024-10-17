@@ -2,8 +2,10 @@ pipeline {
     agent any
 
     environment {
+        AZURE_SUBSCRIPTION = '9734ed68-621d-47ed-babd-269110dbacb1'
         AZURE_RG = '1-8ba3b1fe-playground-sandbox'
         AZURE_APP_NAME = 'Group7weatherApp'
+        AZURE_CREDENTIALS = credentials('6017b805-bfc3-4436-bff6-9dc2276627d1')
     }
 
     stages {
@@ -15,21 +17,15 @@ pipeline {
 
         stage('Zip the files') {
             steps {
-                script {
-                    // Zip the files in the current workspace
-                    sh 'zip -r app.zip *'
-                }
+                sh 'zip -r app.zip Jenkinsfile README.md icons index.html media package-lock.json scripts styles'
             }
         }
 
-        stage('Deploy to Azure') {
+        stage('Deploy to Azure App Service') {
             steps {
                 script {
-                    // Using Azure CLI to log in with the provided credentials and deploy the app
-                    sh '''
-                        az login --service-principal -u "a2a53fb5-c734-4d48-833d-474a60773103" -p "IIN8Q~xkeP4~NkavvnGppqkbncSF0KEjOKOWvasZ" --tenant "84f1e4ea-8554-43e1-8709-f0b8589ea118"
-                        az webapp deployment source config-zip --resource-group "$AZURE_RG" --name "$AZURE_APP_NAME" --src "app.zip"
-                    '''
+                    sh 'az login --service-principal -u "$AZURE_CREDENTIALS_USR" -p "$AZURE_CREDENTIALS_PSW" --tenant "$AZURE_CREDENTIALS_TENANT_ID"'
+                    sh 'az webapp deployment source config-zip --resource-group "$AZURE_RG" --name "$AZURE_APP_NAME" --src "app.zip"'
                 }
             }
         }
