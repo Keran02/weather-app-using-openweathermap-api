@@ -8,13 +8,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/Keran02/weather-app-using-openweathermap-api.git'
-            }
-        }
-
-        stage('Build') {
-            steps {
-                sh 'npm install' // Use npm install if you need to build anything
+                git branch: 'main', url: 'https://github.com/kshitizrohilla/weather-app-using-openweathermap-api.git'
             }
         }
 
@@ -23,7 +17,7 @@ pipeline {
                 azureWebAppPublish azureCredentialsId: 'azure-credentials', 
                                    resourceGroup: '1-8ba3b1fe-playground-sandbox', 
                                    appName: 'Group7weatherApp', 
-                                   filePath: '**/*.zip'
+                                   filePath: '**/*' // Deploys all files (HTML, JS, etc.)
             }
         }
     }
