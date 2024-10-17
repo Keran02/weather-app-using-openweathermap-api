@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        AZURE_CREDENTIALS = 'azure-credentials'
+        AZURE_CREDENTIALS = '6017b805-bfc3-4436-bff6-9dc2276627d1'
     }
 
     stages {
