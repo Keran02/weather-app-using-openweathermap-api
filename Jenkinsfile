@@ -17,7 +17,7 @@ pipeline {
 
         stage('Zip the files') {
             steps {
-                sh 'zip -r app.zip Jenkinsfile README.md icons index.html media package-lock.json scripts styles'
+                sh 'zip -r app.zip Jenkinsfile icons index.html media scripts styles'
             }
         }
 
