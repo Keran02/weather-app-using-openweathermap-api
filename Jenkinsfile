@@ -14,7 +14,7 @@ pipeline {
 
         stage('Deploy to Azure') {
             steps {
-                azureWebAppPublish azureCredentialsId: 'azure-credentials', 
+                azureWebAppPublish azureCredentialsId: '6017b805-bfc3-4436-bff6-9dc2276627d1', 
                                    resourceGroup: '1-8ba3b1fe-playground-sandbox', 
                                    appName: 'Group7weatherApp', 
                                    filePath: '**/*' // Deploys all files (HTML, JS, etc.)
