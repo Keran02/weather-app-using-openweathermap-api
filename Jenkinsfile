@@ -4,7 +4,8 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the source code from GitHub
-                git branch: 'main', url: 'https://github.com/your-repo/weather-app.git'
+                git branch: 'main', url: 'https://github.com/your-repo/weather-app.git',
+                credentialsId: 'githubpat'
             }
         }
         stage('Install Azure CLI') {
