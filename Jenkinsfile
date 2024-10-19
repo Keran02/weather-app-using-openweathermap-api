@@ -7,6 +7,11 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/Keran02/weather-app-using-openweathermap-api.git', credentialsId: 'githubpat'
             }
         }
+         stage('Zip the files') {
+            steps {
+                sh 'zip -r app.zip icons index.html media scripts styles'
+            }
+        }
         stage('Login to Azure') {
             steps {
                 script {
@@ -27,7 +32,7 @@ pipeline {
             steps {
                 // Deploy the app using a zip package
                 sh '''
-                    az webapp deployment source config-zip --resource-group 1-d05d67e0-playground-sandbox --name ESISWeatherApp2 --src weather-app.zip
+                    az webapp deployment source config-zip --resource-group 1-d05d67e0-playground-sandbox --name ESISWeatherApp2 --src app.zip
                     az webapp config appsettings set --resource-group 1-d05d67e0-playground-sandbox --name ESISWeatherApp2 --settings "API_KEY=7d3582ada4896dccd3e42654d40246c4"
                 '''
             }
