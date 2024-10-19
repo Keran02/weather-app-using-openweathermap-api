@@ -8,11 +8,6 @@ pipeline {
                 credentialsId: 'githubpat'
             }
         }
-        stage('Install Azure CLI') {
-            steps {
-                sh 'curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash'
-            }
-        }
         stage('Login to Azure') {
             steps {
                 script {
