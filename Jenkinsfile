@@ -4,7 +4,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the source code from GitHub
-                git branch: 'main', url: 'https://github.com/your-repo/weather-app.git',
+                git branch: 'main', url: 'https://github.com/Keran02/weather-app-using-openweathermap-api.git',
                 credentialsId: 'githubpat'
             }
         }
