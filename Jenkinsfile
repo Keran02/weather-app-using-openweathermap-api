@@ -19,7 +19,7 @@ pipeline {
             steps {
                 // Create the Azure web app with Node.js runtime (adjust if necessary)
                 sh '''
-                    az webapp create --name ESISWeatherApp2 --resource-group 1-d05d67e0-playground-sandbox --plan Group7weatherAppServicePlan --runtime "node|14-lts"
+                    az webapp create --name ESISWeatherApp2 --resource-group 1-d05d67e0-playground-sandbox --plan Group7weatherAppServicePlan --runtime "node|16-lts"
                 '''
             }
         }
