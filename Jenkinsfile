@@ -24,7 +24,7 @@ pipeline {
             steps {
                 // Create the Azure web app with Node.js runtime (adjust if necessary)
                 sh '''
-                    az webapp create --name ESISWeatherApp2 --resource-group 1-d05d67e0-playground-sandbox --plan Group7weatherAppServicePlan --runtime "node|16-lts"
+                    az webapp create --name ESISWeatherApp3 --resource-group 1-dfbc852d-playground-sandbox --plan Group7weatherAppServicePlan --runtime "node|16-lts"
                 '''
             }
         }
@@ -32,8 +32,8 @@ pipeline {
             steps {
                 // Deploy the app using a zip package
                 sh '''
-                    az webapp deployment source config-zip --resource-group 1-d05d67e0-playground-sandbox --name ESISWeatherApp2 --src app.zip
-                    az webapp config appsettings set --resource-group 1-d05d67e0-playground-sandbox --name ESISWeatherApp2 --settings "API_KEY=7d3582ada4896dccd3e42654d40246c4"
+                    az webapp deployment source config-zip --resource-group 1-dfbc852d-playground-sandbox --name ESISWeatherApp3 --src app.zip
+                    az webapp config appsettings set --resource-group 1-dfbc852d-playground-sandbox --name ESISWeatherApp3 --settings "API_KEY=7d3582ada4896dccd3e42654d40246c4"
                 '''
             }
         }
